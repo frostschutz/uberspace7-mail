@@ -54,6 +54,7 @@ Deliver only `isabell@philae.tld` to `isabell`, silently discard everything else
 if [ "${EXT,,}@${HOST,,}" == "isabell@philae.tld" ]
 then
     EXT=isabell /usr/bin/vdeliver
+    exit $?
 fi
 exit 0 # discard
 ```
