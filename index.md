@@ -22,8 +22,8 @@ qmail provides the address the mail was sent to in two environment variables `EX
 
 qmail then starts `vdeliver` (if spamfolder is disabled) or `maildrop ~/.spamfolder` (if spamfolder is enabled) and these programs then place the mail into the mailbox specified as `EXT`.
 
-> `$ uberspace mail spamfolder status`
-> Your `/home/isabell/.qmail-default` contains things different from our default setup. Therefore we cannot tell about the status of the spam folder feature.
+> `$ uberspace mail spamfolder status`  
+> Your `/home/isabell/.qmail-default` contains things different from our default setup. Therefore we cannot tell about the status of the spam folder feature.  
 > Our standard setup consists of a `/home/isabell/.qmail-default` file containing the string `|/usr/bin/vdeliver` (spam folder disabled) or `|maildrop /home/isabell/.spamfolder` (spam folder enabled).
 
 As for `HOST`, it is simply ignored in the default setup of Uberspace. So `isabell@anywhere` always goes into the `isabell` mailbox, regardless which domain it was sent to.
