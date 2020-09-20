@@ -62,6 +62,7 @@ Arbitrary address to mailbox routing:
   
 ```bash
 #!/bin/bash
+set -e
 address="${EXT,,}@${HOST,,}"
 case "${address}" in
     # philae.tld
@@ -72,8 +73,7 @@ case "${address}" in
     # catchall
     *)  EXT=default /usr/bin/vdeliver  ;;
 esac
-# default:
-/usr/bin/vdeliver
+exit 0 # discard
 ```
 
 In this fashion, you can add an additional layer between mailboxes and mail addresses.
