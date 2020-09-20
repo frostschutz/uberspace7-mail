@@ -66,9 +66,9 @@ A few examples:
       "isabell@philae.tld")      EXT=isabell /usr/bin/vdeliver  ;;
       "isabell.doe@philae.tld")  EXT=isabell /usr/bin/vdeliver  ;;
       # obelisk.tld
-      *"@obelisk.tld")           EXT=rosetta /usr/bin/maildrop ~/.spamfolder  ;;
+      *"@obelisk.tld")  EXT=rosetta /usr/bin/maildrop ~/.spamfolder  ;;
       # catchall
-      *)                         EXT=default /usr/bin/vdeliver  ;;
+      *)  EXT=default /usr/bin/vdeliver  ;;
   esac
   # default:
   /usr/bin/vdeliver
