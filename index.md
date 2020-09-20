@@ -104,12 +104,12 @@ By reading mail headers and body from stdin, you could even filter and e.g. deli
     IFS=$'\n\t'
     ```
 
-* [Accessing your Mails](https://manual.uberspace.de/mail-access.html) is unaffected, so only `$MAILBOX@$DOMAIN` works.
+* [Accessing your Mails](https://manual.uberspace.de/mail-access.html) is unaffected, so only `$MAILBOX@$DOMAIN` works. This makes it inferior to Uberspace 6 namespaces, which are no longer available under Uberspace 7.
 
-  - `isabell@obelisk.tld` is still Isabell's mailbox, even if you mapped it to Rosetta. This makes it inferior to Uberspace 6 namespaces, which are no longer available under Uberspace 7.
+  - `isabell@obelisk.tld` is still Isabell's mailbox, even if you mapped it to Rosetta.
  
-  - `$DOMAIN` must have a [MX record](https://en.wikipedia.org/wiki/MX_record) like `MX -> philae.uberspace.de` (your host name). Furthermore, it must be the only MX record for this domain. This can be a problem when migrating mail servers. Changing the MX record makes your mailbox inaccessible, while mails are still delivered to it for another 24-48 hours.
+  - `$DOMAIN` must have a [MX record](https://en.wikipedia.org/wiki/MX_record) like `MX -> philae.uberspace.de` (your host name). Furthermore, it must be the primary MX record for this domain. This can be a problem when migrating mail servers. Changing the MX record makes your mailbox inaccessible, while mails are still delivered to it for another 24-48 hours.
     
-    * Instead of `isabell@yourdomain.tld`, use `isabell@isabell.philae.uberspace.de` (your internal Uberspace 7 user and hostname) when accessing the mailbox.
+    * Instead of `isabell@yourdomain.tld`, use `isabell@isabell.philae.uberspace.de` (your internal Uberspace 7 maildomain) when accessing the mailbox.
     
-    * Alternatively, `uberspace mail domain add philae.yourdomain.tld` and use a custom subdomain with MX record to access your mails (does not reveal Uberspace username).
+    * Alternatively, use a custom subdomain like `uberspace mail domain add u7mail.yourdomain.tld` with MX record to access your mails (does not reveal Uberspace username and allows migrating).
