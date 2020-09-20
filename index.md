@@ -40,33 +40,39 @@ A few examples:
 
 * Deliver all mail to `isabell`:
 
-      #!/bin/bash
-      EXT=isabell /usr/bin/vdeliver
+  ```bash
+  #!/bin/bash
+  EXT=isabell /usr/bin/vdeliver
+  ```
     
 * Deliver only `isabell@philae.tld` to `isabell`, silently discard everything else:
 
-      #!/bin/bash
-      if [ "${EXT,,}@${HOST,,}" == "isabell@philae.tld" ]
-      then
-          EXT=isabell /usr/bin/vdeliver
-      fi
-      exit 0 # discard
+  ```bash
+  #!/bin/bash
+  if [ "${EXT,,}@${HOST,,}" == "isabell@philae.tld" ]
+  then
+      EXT=isabell /usr/bin/vdeliver
+  fi
+  exit 0 # discard
+  ```
     
 * Arbitrary address to mailbox routing:
   
-      #!/bin/bash
-      address="${EXT,,}@${HOST,,}"
-      case "${address}" in
-          # philae.tld
-          "isabell@philae.tld")      EXT=isabell /usr/bin/vdeliver  ;;
-          "isabell.doe@philae.tld")  EXT=isabell /usr/bin/vdeliver  ;;
-          # obelisk.tld
-          *"@obelisk.tld")           EXT=rosetta /usr/bin/maildrop ~/.spamfolder  ;;
-          # catchall
-          *)                         EXT=default /usr/bin/vdeliver  ;;
-      esac
-      # default:
-      /usr/bin/vdeliver
+  ```bash
+  #!/bin/bash
+  address="${EXT,,}@${HOST,,}"
+  case "${address}" in
+      # philae.tld
+      "isabell@philae.tld")      EXT=isabell /usr/bin/vdeliver  ;;
+      "isabell.doe@philae.tld")  EXT=isabell /usr/bin/vdeliver  ;;
+      # obelisk.tld
+      *"@obelisk.tld")           EXT=rosetta /usr/bin/maildrop ~/.spamfolder  ;;
+      # catchall
+      *)                         EXT=default /usr/bin/vdeliver  ;;
+  esac
+  # default:
+  /usr/bin/vdeliver
+  ```
 
 In this fashion, you can add an additional layer between mailboxes and mail addresses.
 
@@ -92,9 +98,11 @@ By reading mail headers and body from stdin, you could even filter and e.g. deli
   
   - Use the [unofficial bash strict mode](http://redsymbol.net/articles/unofficial-bash-strict-mode/):
 
-        #!/bin/bash
-        set -euo pipefail
-        IFS=$'\n\t'
+    ```bash
+    #!/bin/bash
+    set -euo pipefail
+    IFS=$'\n\t'
+    ```
 
 * [Accessing your Mails](https://manual.uberspace.de/mail-access.html) is unaffected, so only `$MAILBOX@$DOMAIN` works.
 
@@ -105,4 +113,3 @@ By reading mail headers and body from stdin, you could even filter and e.g. deli
     * Instead of `isabell@yourdomain.tld`, use `isabell@isabell.philae.uberspace.de` (your internal Uberspace 7 user and hostname) when accessing the mailbox.
     
     * Alternatively, `uberspace mail domain add philae.yourdomain.tld` and use a custom subdomain with MX record to access your mails (does not reveal Uberspace username).
-    
