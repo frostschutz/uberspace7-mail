@@ -8,7 +8,7 @@ Unfortunately, this comes with a limitation:
 >
 > If you have set up additional domains, `$MAILBOX@$DOMAIN` will also work.
 
-So any mailbox you define will be available under any domain.
+So any mailbox you define will be available under all of your configured mail domains.
 
 Creating domain-specific mail addresses (`isabell@philae.tld` but not `isabell@obelisk.tld`) is not possible.
 
@@ -16,7 +16,7 @@ Unless you implement it yourself. :-)
 
 ----
 
-##### .QMAIL
+#### .QMAIL
 
 Uberspace uses netqmail's [.qmail files](https://web.archive.org/web/20200902011211/https://wiki.uberspace.de/mail:dotqmail) in the user's home directory to handle incoming mail.
 
@@ -38,7 +38,7 @@ In this script, you can change the mailbox easily by setting `EXT` to a differen
 
 ----
 
-##### EXAMPLES
+#### EXAMPLES
 
 Deliver all mail to `isabell`:
 
@@ -87,7 +87,7 @@ By reading mail headers and body from stdin, you could even filter and e.g. deli
 
 ----
 
-##### CAVEATS
+#### CAVEATS
 
 This method is not officially supported in any way. Expect it to break at any time. *Please don't bother Uberspace support with it.*
 
@@ -109,13 +109,13 @@ A single error in your script might end up *silently discarding mails*, or deliv
 
 ----
 
-##### ACCESS
+#### ACCESS
 
-[Accessing your Mails](https://manual.uberspace.de/mail-access.html) is unaffected, so only `$MAILBOX@$DOMAIN` works. This makes it inferior to Uberspace 6 namespaces, which are no longer available under Uberspace 7.
+[Accessing your Mails](https://manual.uberspace.de/mail-access.html) is unaffected, so only `$MAILBOX@$DOMAIN` works as username to the POP/IMAP/SMTP-. This makes it inferior to Uberspace 6 namespaces, which are no longer available under Uberspace 7.
 
 - `isabell@obelisk.tld` is still Isabell's mailbox, even if you mapped it to Rosetta.
  
-`$DOMAIN` must have a [MX record](https://en.wikipedia.org/wiki/MX_record) like `MX -> philae.uberspace.de` (your host name). Furthermore, it must be the primary MX record for this domain. This can be a problem when migrating mail servers. Changing the MX record makes your mailbox inaccessible, while mails are still delivered to it for another 24-48 hours.
+`$DOMAIN` must have an [MX record](https://en.wikipedia.org/wiki/MX_record) like `MX -> philae.uberspace.de` (your host name). Furthermore, it must be the primary MX record for this domain. This can be a problem when migrating mail servers. Changing the MX record makes your mailbox inaccessible, while mails are still delivered to it for another 24-48 hours.
     
 - Instead of `isabell@yourdomain.tld`, use `isabell@isabell.philae.uberspace.de` (your internal Uberspace 7 maildomain) when accessing the mailbox.
     
