@@ -111,7 +111,7 @@ A single error in your script might end up *silently discarding mails*, or deliv
 
 #### ACCESS
 
-[Accessing your Mails](https://manual.uberspace.de/mail-access.html) is unaffected, so only `$MAILBOX@$DOMAIN` works as username to the POP/IMAP/SMTP-. This makes it inferior to Uberspace 6 namespaces, which are no longer available under Uberspace 7.
+[Accessing your Mails](https://manual.uberspace.de/mail-access.html) is unaffected, so only `$MAILBOX@$DOMAIN` works as username to the POP/IMAP/SMTP-servers and the [webmail interface](https://webmail.uberspace.de). This makes it inferior to Uberspace 6 namespaces, which are no longer available under Uberspace 7.
 
 - `isabell@obelisk.tld` is still Isabell's mailbox, even if you mapped it to Rosetta.
  
